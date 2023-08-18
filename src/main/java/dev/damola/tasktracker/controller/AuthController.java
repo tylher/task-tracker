@@ -44,18 +44,23 @@ public class AuthController {
     }
 
     @PostMapping("/signin")
-    LoginResponse login(@RequestBody Login request){
+    String login(@RequestBody Login request){
         System.out.println(request.getUsername());
-        var authentication = authenticationManager.authenticate(
-               new UsernamePasswordAuthenticationToken(request.getUsername()
-                        ,  request.getPassword())
-        );
-        System.out.println(authentication);
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        var principal = (UserPrincipal)authentication.getPrincipal();
-        System.out.println(principal.getUsername());
-        var token = jwtIssuer.issue(principal.getId(), principal.getUsername());
-        System.out.println(token);
-        return LoginResponse.builder().token(token).build();
+        var res =  new UsernamePasswordAuthenticationToken(request.getUsername()
+                ,  request.getPassword());
+        System.out.println(res);
+
+        try{
+            var authentication = authenticationManager.authenticate(res);
+            System.out.println(authentication);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return "Good";
+
+//        SecurityContextHolder.getContext().setAuthentication(authentication);
+//        var principal = (UserPrincipal)authentication.getPrincipal();
+//        var token = jwtIssuer.issue(principal.getId(), principal.getUsername());
+//        return LoginResponse.builder().token(token).build();
     }
 }

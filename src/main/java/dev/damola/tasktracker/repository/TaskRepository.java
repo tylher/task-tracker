@@ -8,5 +8,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TaskRepository extends JpaRepository<Task, Long>{
-//    List<Task> findByOwner(UserEntity owner);
+    List<Task> findByOwner(UserEntity owner);
 }

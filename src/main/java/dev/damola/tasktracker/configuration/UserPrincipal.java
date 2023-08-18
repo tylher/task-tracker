@@ -1,5 +1,6 @@
 package dev.damola.tasktracker.configuration;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -14,10 +15,13 @@ import java.util.Collection;
 public class UserPrincipal implements UserDetails {
     private final Long id;
     private final String username;
+
+    @JsonIgnore
     private final String password;
+    private final Collection<? extends GrantedAuthority> authorities;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return authorities;
     }
 
     @Override

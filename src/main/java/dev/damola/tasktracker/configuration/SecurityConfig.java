@@ -67,7 +67,8 @@ public class SecurityConfig {
                http.getSharedObject(AuthenticationManagerBuilder.class);
        authenticationManagerBuilder
                .userDetailsService(customUserDetailService)
-               .passwordEncoder(passwordEncoder()).
+               .passwordEncoder(passwordEncoder());
+       return authenticationManagerBuilder.build();
     }
 
 }

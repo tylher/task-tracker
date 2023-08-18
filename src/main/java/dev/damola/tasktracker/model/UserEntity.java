@@ -1,8 +1,8 @@
 package dev.damola.tasktracker.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 //expose setters and getters for user model
 @Data
@@ -12,6 +12,8 @@ import lombok.Data;
 })
 @Entity
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +24,6 @@ public class UserEntity {
 
     @Column(nullable = false)
     private String password;
+
+    private String role;
 }
