@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Objects;
+
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
@@ -37,7 +39,9 @@ public class AuthController {
         if(userRepository.existsByUsername(user.getUsername())){
             return ResponseEntity.badRequest().body("Username has been taken");
         }
-
+        if(Objects.equals(user.getRole(), "")){
+            user.setRole("ROLE_USER");
+        }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return ResponseEntity.ok("User registered successfully");
