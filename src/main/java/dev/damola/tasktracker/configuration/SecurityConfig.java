@@ -46,7 +46,10 @@ public class SecurityConfig {
                  .securityMatcher("*/**")
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers(new AntPathRequestMatcher("/h2-console/**"),
-                                        new AntPathRequestMatcher("/auth/**","POST")
+                                        new AntPathRequestMatcher("/auth/**","POST"),
+                                        new AntPathRequestMatcher("/actuator/**"),
+                                        new AntPathRequestMatcher("/swagger-ui/**"),
+                                        new AntPathRequestMatcher("/v3/api-docs")
                                         )
                                 .permitAll()
                                 .anyRequest().authenticated());

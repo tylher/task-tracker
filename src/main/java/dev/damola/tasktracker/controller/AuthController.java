@@ -6,6 +6,8 @@ import dev.damola.tasktracker.model.Login;
 import dev.damola.tasktracker.model.LoginResponse;
 import dev.damola.tasktracker.model.UserEntity;
 import dev.damola.tasktracker.repository.UserRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,7 @@ import java.util.Objects;
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
+@Tag(name="Auth API", description="authenticate user on entry into application")
 public class AuthController {
     @Autowired
     private UserRepository userRepository;
@@ -34,6 +37,7 @@ public class AuthController {
 
     @Autowired
     private JwtIssuer jwtIssuer;
+    @Operation(summary = "register a new user")
     @PostMapping("/register")
     ResponseEntity<?> registerUser(@RequestBody  UserEntity user){
         if(userRepository.existsByUsername(user.getUsername())){
@@ -48,6 +52,7 @@ public class AuthController {
     }
 
     @PostMapping("/signin")
+    @Operation(summary = "Log user in and generate token for authentication")
     String login(@RequestBody Login request){
         System.out.println(request.getUsername());
         var res =  new UsernamePasswordAuthenticationToken(request.getUsername()
