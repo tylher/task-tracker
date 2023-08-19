@@ -85,7 +85,7 @@ This is an application for organizing, storing and assigning tasks. Login and Si
 > These are key features of this project.
 
 - **CRUD(create,read,update,destroy) actions on taskss**
-- **assign task to use**
+- **assign task to a user**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -128,14 +128,14 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  git clone git@github.com:tylher/contact-book.git
+  git clone git@github.com:tylher/task-tracker.git
 ```
 
 ### Install
 
 Install this project with:
 
-> install XAMPP and spin up Apache server and MySQL database on your local machine. Save the cloned project in the server folder 'xampp/htdocs' and
+> Open the cloned project on Intellij IDE and hit the run button to spin up Tomcat server and database.
 
 <!--
 Example command:
@@ -150,7 +150,14 @@ Example command:
 
 To run the project, execute the following command:
 
-> Navigate to 'localhost' on your browser.
+> Test the API end points on API clients such as RapidAPI, Postman etc.
+
+To run read documentation for each endpoints :
+
+> Navigate to <a href="localhost:8080/swagger-ui/index.html">localhost:8080/swagger-ui/index.html</a>
+> input "/v3/api-docs" in the explore search box
+
+<img src="asset/api-doc.png" >
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
