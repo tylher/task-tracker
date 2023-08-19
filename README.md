@@ -154,7 +154,7 @@ To run the project, execute the following command:
 
 To run read documentation for each endpoints :
 
-> Navigate to <a href="localhost:8080/swagger-ui/index.html">localhost:8080/swagger-ui/index.html</a>
+> Navigate to <a href="localhost:8080/swagger-ui/index.html"> localhost:8080/swagger-ui/index.html</a><br>
 > input "/v3/api-docs" in the explore search box
 
 <img src="asset/api-doc.png" >
