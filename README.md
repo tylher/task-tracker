@@ -157,7 +157,7 @@ To run read documentation for each endpoints :
 > Navigate to <a href="localhost:8080/swagger-ui/index.html"> localhost:8080/swagger-ui/index.html</a><br>
 > input "/v3/api-docs" in the explore search box
 
-<img src="asset/api-doc.png" >
+<img src="asset/api-doc.png" alt='API documentation for test tracker'>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 

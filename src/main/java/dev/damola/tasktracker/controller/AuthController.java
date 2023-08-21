@@ -53,7 +53,7 @@ public class AuthController {
 
     @PostMapping("/signin")
     @Operation(summary = "Log user in and generate token for authentication")
-    String login(@RequestBody Login request){
+    LoginResponse login(@RequestBody Login request){
         System.out.println(request.getUsername());
         var res =  new UsernamePasswordAuthenticationToken(request.getUsername()
                 ,  request.getPassword());
@@ -61,15 +61,13 @@ public class AuthController {
 
         try{
             var authentication = authenticationManager.authenticate(res);
-            System.out.println(authentication);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            var principal = (UserPrincipal)authentication.getPrincipal();
+            var token = jwtIssuer.issue(principal.getId(), principal.getUsername());
+            return LoginResponse.builder().token(token).build();
         }catch (Exception e){
             System.out.println(e);
         }
-        return "Good";
-
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
-//        var principal = (UserPrincipal)authentication.getPrincipal();
-//        var token = jwtIssuer.issue(principal.getId(), principal.getUsername());
-//        return LoginResponse.builder().token(token).build();
+        return null;
     }
 }
